@@ -8,6 +8,6 @@ sleep 12 &
 
 endtime=$(date +%s)
 
-TT=$($starttime-$endtime)
+TT=$(($starttime-$endtime))
 
-echo " TIme taken to execute = $TT seconds "
+echo " Time taken to execute = $TT seconds "
