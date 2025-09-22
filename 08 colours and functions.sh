@@ -6,7 +6,7 @@ Y="/e[33m"
 N="/e[0m"
 
 UserID=$(id -u)
-if [userID -ne 0 ]; then
+if [ UserID -ne 0 ]; then
     echo -e " $R Get sudo access BOZO $N "
     exit 3
 fi
