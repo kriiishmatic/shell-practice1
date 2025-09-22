@@ -1,9 +1,9 @@
 #!/bin/bash
 
-R="/e[31m"
-G="/e[32m"
-Y="/e[33m"
-N="/e[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 USERID=$(id -u)
 
@@ -33,10 +33,10 @@ dnf list installed mysql
     dnf install mysql -y
     Status $? "MYSQLDDD"
 else
-    echo -e " nginx insalled already sooo... $Y skipping $N "
+    echo -e " Mysql insalled already sooo... $Y skipping $N "
 
 fi
-dnf list installed python3-pip -y
+dnf list installed python3-pip
     if [ $? -ne 0]; then
     dnf install python3-pip -y
     Status $? "Python conda"
