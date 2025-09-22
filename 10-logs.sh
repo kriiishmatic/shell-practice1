@@ -10,6 +10,11 @@ N="\e[0m"
 
 USERID=$(id -u)
 
+if [ $USERID -ne 0 ]; then
+    echo -e " $R Get sudo access BOZO $N "
+    exit 3
+fi
+
 
 #creating logs files
 ####################
@@ -27,12 +32,6 @@ Logfile="$shell_log/$Remove_sh.log"
 echo " Script started at :: $(date) "
 
 
-
-if [ $USERID -ne 0 ]; then
-    echo -e " $R Get sudo access BOZO $N "
-    exit 3
-fi
-
 Status(){
     if [ $1 -ne 0];then
     echo -e " $R Failed $N to install $2  "
@@ -40,7 +39,6 @@ Status(){
 else
     echo -e "$G Sucessfully $N installed $2 "
 fi
-
 }
 
 dnf list installed nginx & >>$Logfile
