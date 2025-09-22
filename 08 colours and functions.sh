@@ -18,6 +18,8 @@ Status(){
     exit 1
 else
     echo -e "$G Sucessfully $N installed $2 "
+fi
+
 }
 
 dnf list installed nginx
