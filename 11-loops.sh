@@ -49,6 +49,6 @@ for package in $@
         dnf install $package -y &>>$Logfile
         Status $? "$package"
     else
-        echo " $package is already installed ...$Y skipping $N "
+        echo -e package is already installed ...$Y skipping $N "
     fi
 done
