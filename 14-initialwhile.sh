@@ -7,4 +7,4 @@ while IFS= read -r filebirth
     do
     echo " Deleting file :::$filebirth "
     echo " DELETED file  :::$filebirth "
-    done
+    done <<<$filetodelete
