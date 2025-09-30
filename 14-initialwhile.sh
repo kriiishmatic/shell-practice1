@@ -12,5 +12,6 @@ filetodelete=$(find $source_dir -name "*.log" -mtime +24)
 while IFS= read -r filebirth
     do
     echo " Deleting file :::$filebirth "
+    rm -rf $filebirth
     echo " DELETED file  :::$filebirth "
-    done <<<$filetodelete
+    done <<< $filetodelete
