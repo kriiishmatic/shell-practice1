@@ -2,7 +2,7 @@
 
 source_dir=/home/ec2-user/app_log
 
-if [! -d $source_dir ]; then 
+if [ ! -d $source_dir ]; then 
     echo " $source_dir doesnot exist "
     exit1
     else 
