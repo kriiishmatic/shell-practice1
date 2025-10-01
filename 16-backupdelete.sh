@@ -15,7 +15,7 @@ Test(){
 if [ $# -lt 2 ]; then
     Test
 fi
-files=$(find $Source_dir -name "*.log" -mtime +$Days)
+files=$(find $source_dir -name "*.log" -mtime +$Days)
 
 if [ ! -d $source_dir ]; then
     echo -e "$R Source $source_dir doesnt exist $N"
