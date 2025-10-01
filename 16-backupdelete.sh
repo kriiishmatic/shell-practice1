@@ -24,7 +24,7 @@ fi
 if [ ! -d $Dest_dir ]; then
     echo -e "$R Source $Dest_dir doesnt exist $N"
 fi
-if [ -n $files ]; then
+if [ -n "$files" ]; then
     echo " Files found ::: $files "
     Timestamp=$(date +%Y-%m-%d-%H-%M-%S)
     zipfilename=$Dest_dir/SCRIPT_LOGS-$Timestamp.zip
@@ -32,7 +32,7 @@ if [ -n $files ]; then
     find $source_dir -name "*.log" -mtime +$Days | zip -@ -j "$zipfilename"
     if [ -f "$zipfilename" ]; then
         echo -e " $G Files successfully archieved $N"
-        while IFR= read -r filepath #deleting using while loop
+        while IFS= read -r filepath #deleting using while loop
             do 
             echo " Deleting files $filepath "
             rm -rf $filepath
