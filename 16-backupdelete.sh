@@ -12,7 +12,7 @@ Test(){
     echo -e " $R Dynamic inputs not recieved $N "
 }
 
-if [ $# -le 2 ]; then
+if [ $# -lt 2 ]; then
     Test
 fi
 files=$(find $Source_dir -name "*.log" -mtime +$Days)
