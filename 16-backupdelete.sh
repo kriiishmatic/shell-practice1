@@ -24,7 +24,7 @@ fi
 if [ ! -d $Dest_dir ]; then
     echo -e "$R Source $Dest_dir doesnt exist $N"
 fi
-if [ -n $files ]; then # -z to chek if folder is not empty
+if [ -n $files ]; then
     echo " Files found ::: $files "
     Timestamp=$(date +%Y-%m-%d-%H-%M-%S)
     zipfilename=$Dest_dir/SCRIPT_LOGS-$Timestamp.zip
