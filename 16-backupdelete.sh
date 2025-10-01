@@ -15,7 +15,7 @@ Test(){
 if [ $# -le 2 ]; then
     Test
 fi
-files=$(find $Source_dir -name "*.log" -mtime +Days)
+files=$(find $Source_dir -name "*.log" -mtime +$Days)
 
 if [ ! -d $source_dir ]; then
     echo -e "$R Source $source_dir doesnt exist $N"
@@ -29,7 +29,7 @@ if [ -z $files ]; then # -z to chek if folder is empty
     Timestamp=$(date + %Y-%m-%d-%H-%M-%S)
     zipfilename=$Dest_dir/SCRIPT_LOGS-$Timestamp.zip
     echo " Zip file name ::: $zipfilename "
-    find $source_dir -name "*.log" -mtime +Days | zip -@ -j "$zipfilename"
+    find $source_dir -name "*.log" -mtime +$Days | zip -@ -j "$zipfilename"
     if [ -d "$zipfilname"]; then
         echo " $G Files successfully archieved "
     else
