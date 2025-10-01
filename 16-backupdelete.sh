@@ -10,6 +10,7 @@ Days=14
 
 Test(){
     echo -e " $R Dynamic inputs not recieved $N "
+    exit 2
 }
 
 if [ $# -lt 2 ]; then
