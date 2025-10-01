@@ -4,7 +4,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-Source_dir=$1
+source_dir=$1
 Dest_dir=$2
 Days=14
 
@@ -24,13 +24,13 @@ fi
 if [ ! -d $Dest_dir ]; then
     echo -e "$R Source $Dest_dir doesnt exist $N"
 fi
-if [ -z $files ]; then # -z to chek if folder is empty
+if [ -n $files ]; then # -z to chek if folder is not empty
     echo " Files found ::: $files "
-    Timestamp=$(date + %Y-%m-%d-%H-%M-%S)
+    Timestamp=$(date +%Y-%m-%d-%H-%M-%S)
     zipfilename=$Dest_dir/SCRIPT_LOGS-$Timestamp.zip
     echo " Zip file name ::: $zipfilename "
     find $source_dir -name "*.log" -mtime +$Days | zip -@ -j "$zipfilename"
-    if [ -d "$zipfilname"]; then
+    if [ -f "$zipfilename"]; then
         echo " $G Files successfully archieved "
     else
         echo " $R files not found to archieve "
