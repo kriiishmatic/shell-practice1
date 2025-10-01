@@ -4,7 +4,7 @@ source_dir=/home/ec2-user/app_log
 
 if [ ! -d $source_dir ]; then 
     echo " $source_dir doesnot exist "
-    exit1
+    exit 1
     else 
     echo " Proceeding to FIND log files older than 14 days "
     fi
