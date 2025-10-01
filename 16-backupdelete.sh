@@ -30,16 +30,16 @@ if [ -n $files ]; then # -z to chek if folder is not empty
     zipfilename=$Dest_dir/SCRIPT_LOGS-$Timestamp.zip
     echo " Zip file name ::: $zipfilename "
     find $source_dir -name "*.log" -mtime +$Days | zip -@ -j "$zipfilename"
-    if [ -f "$zipfilename"]; then
-        echo " $G Files successfully archieved "
-    else
-        echo " $R files not found to archieve "
-    fi
-    while IFR= read -r filepath 
-    do 
-    echo " files found to archive :::$files "
-    echo " Deleting $files :::Clean up "
-    done <<< $files
+    if [ -f "$zipfilename" ]; then
+        echo " $G Files successfully archieved $N"
+        while IFR= read -r filepath 
+            do 
+            echo " files found to archive :::$files "
+             echo " Deleting $files :::Clean up "
+            done <<< $files
     else 
     echo " $R No files found to archieve $N "
+    fi
+    else 
+    echo " $Y No files found $N "
 fi
