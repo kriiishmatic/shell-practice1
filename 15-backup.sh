@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 ###Check_root
-if ( $userid -ne 0 ); then
+if [ $userid -ne 0 ]; then
     echo "Run the scipt with Root Previliges "
     exit 1
 fi
