@@ -6,7 +6,7 @@ Y="\e[33m"
 N="\e[0m"
 Source_dir=$1
 Dest_dir=$2
-Days={$3:-14}
+Days=${$3:-14}
 
 Test(){
     echo -e " $R Dynamic inputs not recieved $N "
