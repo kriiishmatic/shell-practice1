@@ -31,11 +31,12 @@ if [ -n $files ]; then # -z to chek if folder is not empty
     echo " Zip file name ::: $zipfilename "
     find $source_dir -name "*.log" -mtime +$Days | zip -@ -j "$zipfilename"
     if [ -f "$zipfilename" ]; then
-        echo " $G Files successfully archieved $N"
+        echo -e " $G Files successfully archieved $N"
         while IFR= read -r filepath 
             do 
-            echo " files found to archive :::$files "
-             echo " Deleting $files :::Clean up "
+            echo " Deleting files $filepath "
+            rm -rf $filepath
+             echo " Deleted $filepath :::Clean up "
             done <<< $files
     else 
     echo " $R No files found to archieve $N "
