@@ -3,13 +3,14 @@
 Disk_usage=$(df -hT | grep -v Filesystem)
 Disk_limit=20
 IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+Message=""
 
 while IFS= read line
 do
 usage=$(echo "$line"| awk '{print $6}'| cut -d "%" -f1)
 Part=$(echo "$line" | awk '{print $7}')
 if [ $usage -ge $Disk_limit ]; then
-    Message+="High Disk Usage: $part - ${usage} on Server IP: $IP"$'\n'
+    Message+="High Disk Usage: $Part - ${usage} on Server IP: $IP"$'\n'
 fi
 done <<< "$Disk_usage"
 
