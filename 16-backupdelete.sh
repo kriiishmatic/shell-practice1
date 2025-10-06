@@ -9,7 +9,7 @@ Dest_dir=$2
 Days=14
 log_folder=/var/log/shell-script
 script_name=$(echo $0 | cut -d "." -f1)
-log_file="$logfolder/backup.log"
+log_file="$logfolder/backupdelete.log"
 
 mkdir -p $log_folder
 echo "script started executing at $(date)" | tee -a $log_file
