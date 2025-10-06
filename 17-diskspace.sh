@@ -6,12 +6,12 @@ IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 
 while IFS= read line
 do
-usage=$($line | awk '{print $6}'| cut -d "%" -f1)
-Part=$($line | awk '{print $7}')
+usage=$(echo "$line"| awk '{print $6}'| cut -d "%" -f1)
+Part=$(echo "$line" | awk '{print $7}')
 if [ $usage -ge $Disk_limit ]; then
-    Message= High disk space Usage ::: $Part:$usage server with IP:: $IP 
+    Message+= High disk space Usage ::: $Part:$usage server with IP:: $IP $'/n'
 fi
-done <<<$Disk_usage
+done <<< "$Disk_usage"
 
  echo -e " $Message "
 
