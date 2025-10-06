@@ -9,7 +9,7 @@ do
 usage=$($line | awk -F '{print $6}')
 Part=$($line | awk -F '{print $7}')
 if [ $usage -ge $Disk_limit ]; then
-    Message= $(echo " High disk space Usage ::: $Part:$usage server with IP:: $IP ")
+    Message= High disk space Usage ::: $Part:$usage server with IP:: $IP 
 fi
 done >>$Disk_usage
 
