@@ -7,7 +7,12 @@ N="\e[0m"
 source_dir=$1
 Dest_dir=$2
 Days=14
+log_folder=/var/log/shell-script
+script_name=$(echo $0 | cut -d "." -f1)
+log_file="$logfolder/backup.log"
 
+mkdir -p $log_folder
+echo "script started executing at $(date)" | tee -a $log_file
 Test(){
     echo -e " $R Dynamic inputs not recieved $N "
     exit 2
