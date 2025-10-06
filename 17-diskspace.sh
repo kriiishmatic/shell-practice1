@@ -1,20 +1,28 @@
 #!/bin/bash
 
-Disk_usage=$(df -hT | grep -v Filesystem)
-Disk_limit=20
-IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
-Message=""
+#!/bin/bash
 
-while IFS= read line
+DISK_USAGE=$(df -hT | grep -v Filesystem)
+DISK_THRESHOLD=2 # in project we keep it as 75
+IP_ADDRESS=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+MESSAGE=""
+
+while IFS= read -r line
 do
-usage=$(echo "$line"| awk '{print $6}'| cut -d "%" -f1)
-Part=$(echo "$line" | awk '{print $7}')
-if [ $usage -ge $Disk_limit ]; then
-    Message+="High Disk Usage: $Part - ${usage} on Server IP: $IP"$'\n'
-fi
-done <<< "$Disk_usage"
+    USAGE=$(echo $line | awk '{print $6}' | cut -d "%" -f1)
+    PARTITION=$(echo $line | awk '{print $7}')
+    if [ $USAGE -ge $DISK_THRESHOLD ]; then
+        MESSAGE+="High Disk usage on $PARTITION: $USAGE % <br>" # escaping
+    fi
+done <<< $DISK_USAGE
 
- echo -e " $Message "
+echo -e "Message Body: $MESSAGE"
 
 sh 18-mail.sh "kriiishmatic@gmail.com" "Highest alert" "Disk usage::high alert" "$Message" "$IP" "devops team"
+
+# TO_ADDRESS=$1
+# SUBJECT=$2
+# ALERT_TYPE=$3
+# MESSAGE_BODY=$4
+# IP_ADDRESS=$5
 
