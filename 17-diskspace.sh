@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Disk_usage=$(df -hT | grep -v Filesystem)
-Disk_limit=2
+Disk_limit=20
 IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 
 while IFS= read line
