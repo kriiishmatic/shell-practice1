@@ -15,5 +15,5 @@ done <<< "$Disk_usage"
 
  echo -e " $Message "
 
-#18-mail.sh "kriiishmatic@gmail.com" "Highest alert" "Disk usage high alert" "$Message" "$IP" "devops team"
+18-mail.sh "kriiishmatic@gmail.com" "Highest alert" "Disk usage::high alert" "$Message" "$IP" "devops team"
 
